@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <title>{% block title %}{% endblock %}</title>
+    {{ encore_entry_link_tags('styles') }}
+</head>
+<body  class="border-top-wide border-primary d-flex flex-column">
+<div class="page page-center">
+    <div class="container-tight py-4">
+        {% block content %}{% endblock %}
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+

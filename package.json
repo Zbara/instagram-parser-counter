@@ -1,0 +1,44 @@
+{
+  "devDependencies": {
+    "@symfony/webpack-encore": "^1.6.1",
+    "file-loader": "^6.0.0",
+    "sass": "^1.43.5",
+    "sass-loader": "^12.0.0",
+    "ts-loader": "^9.0.0",
+    "typescript": "^4.5.4"
+  },
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  },
+  "dependencies": {
+    "@eonasdan/tempus-dominus": "^6.0.0-beta8",
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "@popperjs/core": "^2.11.5",
+    "@yaireo/tagify": "^4.12.0",
+    "apexcharts": "^3.33.0",
+    "autosize": "^5.0.1",
+    "bloodhound-js": "^1.2.3",
+    "bootstrap": "^5.1.3",
+    "bootstrap-datepicker": "^1.9.0",
+    "bootstrap-tagsinput": "^0.7.1",
+    "bootswatch": "^3.3.7",
+    "core-js": "^3.19.2",
+    "cropperjs": "^1.5.12",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.49",
+    "fetch-jsonp": "^1.2.1",
+    "foreach": "^2.0.5",
+    "imask": "^6.2.2",
+    "install": "^0.13.0",
+    "jquery": "^3.6.0",
+    "prop-types": "^15.8.1",
+    "query-string": "^7.0.1",
+    "sprintf-js": "^1.1.2",
+    "tinymce": "^6.0.3",
+    "toastr": "^2.1.4",
+    "tom-select": "^2.0.0",
+    "webpack-notifier": "^1.14.1"
+  }
+}

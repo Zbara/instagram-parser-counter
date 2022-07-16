@@ -1,0 +1,14 @@
+{% extends '/TwigBundle/main.html.twig' %}
+{% block title 'Error Server' %}
+{% block content %}
+    <div class="empty">
+        <div class="empty-header">{{ status_code }}</div>
+        <p class="empty-subtitle text-muted">
+            {{ 'http_error.description'|trans({ '%status_code%': status_code }) }}
+        </p>
+        <div class="empty-action">
+            {{ 'http_error.suggestion'|trans({ '%url%': path('app_main') })|raw }}
+        </div>
+    </div>
+{% endblock %}
+
