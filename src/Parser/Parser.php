@@ -24,7 +24,7 @@ class Parser
         $this->environment = $environment;
     }
 
-    public function handle(Instagram $instagram): array
+    public function handle(Instagram $instagram, string $result = 'all'): array
     {
         if ($login = $this->getLogin($instagram->getLogin())) {
             $data = $this->api->request($login);
@@ -48,21 +48,42 @@ class Parser
                 $this->entityManager->persist($instagram);
                 $this->entityManager->flush();
 
-                return [
-                    'status' => 1,
-                    'result' => [
-                        'messages' => 'Данные о аккаунте получены',
-                        'html' => $this->environment->render('main/parse.items.html.twig', [
-                            'item' => $instagram,
-                        ]),
-                    ]
-                ];
+
+                if($result == 'all') {
+                    return [
+                        'status' => 1,
+                        'result' => [
+                            'messages' => 'Данные о аккаунте получены',
+                            'html' => $this->environment->render('main/parse.items.html.twig', [
+                                'item' => $instagram,
+                            ]),
+                        ]
+                    ];
+                } else {
+                    return [
+                        'status' => 1,
+                        'data' => [
+                            'avatar' => $instagram->getAvatar(),
+                            'login' => $instagram->getLogin(),
+                            'subscriptions' => $instagram->getSubscriptions(),
+                            'subscribers' => $instagram->getSubscribers(),
+                            'photos' => (function($photo){
+                                $array = [];
+                                foreach ($photo as $item){
+                                    $array[] = [
+                                        'item' => $item
+                                    ];
+                                }
+                                return $array;
+                            })($instagram->getPhotos()),
+                        ]
+                    ];
+                }
             }
             return ['status' => 0, 'error' => ['messages' => 'Ошибка при подключение к инсте.']];
         }
         return ['status' => 0, 'error' => ['messages' => 'Не верный ник!']];
     }
-
 
     public function getLogin(string $url): float|bool|int|string
     {
@@ -77,6 +98,6 @@ class Parser
         if (('instagram.com' === $parts[0] || 'www.instagram.com' === $parts[0])) {
             return $parts[1];
         }
-        return false;
+        return $parts[0];
     }
 }

@@ -21,6 +21,20 @@ class MainController extends AbstractController
         return new Response('OK');
     }
 
+
+    #[Route('/data', name: 'app_parse_data')]
+    public function data(Request $request, Parser $parser): Response
+    {
+        if($request->get('username')) {
+            $instagram = new Instagram();
+            $instagram->setLogin($request->get('username'));
+
+            return $this->json($parser->handle($instagram, 'api'));
+        }
+        return $this->json(['status' => 0, 'error' => ['messages' => 'Имя пользователя не может быть пустым.']]);
+    }
+
+
     #[Route('/parse', name: 'app_parse')]
     public function parse(Request $request, FormError $formError, Parser $parser, InstagramRepository $repository): Response
     {
