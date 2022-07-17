@@ -23,6 +23,8 @@ Powered by :
 
     symfony serve
 
+    ./bin/console cache:clear
+
 Скрипты
 
     public/
