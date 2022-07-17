@@ -1,0 +1,20 @@
+<tr>
+    <td>
+        {{ item.login }}
+    </td>
+    <td>
+        <a href="{{ item.avatar }}" target="_blank">перейти</a>
+    </td>
+    <td>
+        {{ item.subscriptions }}
+    </td>
+    <td>
+        {{ item.subscribers }}
+    </td>
+    <td>
+        {% for photo in item.photos %}
+            <a href="{{ photo }}" target="_blank">перейти</a>
+            <br/>
+        {% endfor %}
+    </td>
+</tr>

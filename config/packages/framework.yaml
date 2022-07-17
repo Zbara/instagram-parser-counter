@@ -17,8 +17,10 @@ framework:
     php_errors:
         log: true
 
-when@test:
-    framework:
-        test: true
-        session:
-            storage_factory_id: session.storage.factory.mock_file
+    http_client:
+        default_options:
+            verify_peer: false
+            verify_host: false
+            timeout: 100
+            headers:
+                'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36'
