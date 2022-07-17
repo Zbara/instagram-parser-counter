@@ -29,7 +29,7 @@ class Api
                 'headers' => [
                     'X-IG-App-ID' =>  '936619743392459'
                 ],
-                'proxy' => 'http://:@127.0.0.1:8888'
+               // 'proxy' => 'http://:@127.0.0.1:8888'
             ]);
             if (Response::HTTP_OK === $response->getStatusCode()) {
                 return $response->toArray();
